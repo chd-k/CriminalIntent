@@ -1,8 +1,10 @@
 package com.bignerdranch.android.criminalintent
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import android.text.format.DateFormat.format
 import androidx.recyclerview.widget.RecyclerView
 import com.bignerdranch.android.criminalintent.databinding.ListItemCrimeBinding
 
@@ -29,7 +31,7 @@ class CrimeHolder(
 ) : RecyclerView.ViewHolder(binding.root) {
     fun bind(crime: Crime) {
         binding.crimeTitle.text = crime.title
-        binding.crimeDate.text = crime.date.toString()
+        binding.crimeDate.text = format("HH:mm, E, d MMMM yyyy", crime.date)
         binding.root.setOnClickListener {
             Toast.makeText(
                 binding.root.context,
@@ -37,5 +39,7 @@ class CrimeHolder(
                 Toast.LENGTH_SHORT
             ).show()
         }
+
+        binding.crimeSolved.visibility = if (crime.isSolved) View.VISIBLE else View.GONE
     }
 }

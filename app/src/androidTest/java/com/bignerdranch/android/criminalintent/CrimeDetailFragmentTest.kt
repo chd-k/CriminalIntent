@@ -1,7 +1,5 @@
 package com.bignerdranch.android.criminalintent
 
-import org.junit.Assert.*
-import androidx.test.espresso.Espresso
 import org.junit.After
 import org.junit.Before
 

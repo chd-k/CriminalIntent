@@ -1,11 +1,15 @@
 package com.bignerdranch.android.criminalintent
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import java.util.UUID
 import java.util.Date
-import java.util.*
 
+
+//Define structure of table
+@Entity
 data class Crime(
-    val id: UUID,
+    @PrimaryKey val id: UUID,
     val title: String,
     val date: Date,
     val isSolved: Boolean
