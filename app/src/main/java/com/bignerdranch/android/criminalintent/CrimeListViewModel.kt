@@ -11,16 +11,10 @@ class CrimeListViewModel : ViewModel() {
 
     private val crimeRepository = CrimeRepository.get()
 
-    val crimes = mutableListOf<Crime>()
+    val crimes = crimeRepository.getCrimes()
 
     init {
-        Log.d(TAG, "init starting")
         viewModelScope.launch {
-            Log.d(TAG, "coroutine launched")
-            crimes += loadCrimes()
-            Log.d(TAG, "loading finished")
         }
     }
-
-    suspend fun loadCrimes(): List<Crime> = crimeRepository.getCrimes()
 }
